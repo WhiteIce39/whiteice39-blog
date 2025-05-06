@@ -1,0 +1,16 @@
+# 忽略 Hugo 生成的 public 文件夹（它是 Hugo 构建输出目录）
+public/
+
+# Hugo 的缓存目录
+resources/
+
+# 忽略临时文件
+*.log
+.DS_Store
+Thumbs.db
+
+# 忽略 node_modules（如果你将来用 npm 构建前端功能）
+node_modules/
+
+# 忽略 Hugo 发布的临时文件
+hugo_stats.json

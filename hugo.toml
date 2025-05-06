@@ -1,0 +1,4 @@
+baseURL = 'https://whiteice39.github.io/whiteice39-blog/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = "hextra"
