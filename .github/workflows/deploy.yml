@@ -3,23 +3,27 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches:
-      - main  # 如果你用的是 master 分支，这里改成 master
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout source
         uses: actions/checkout@v3
+        with:
+          submodules: true          # ⭐ 拉取 themes/hextra 子模块
+          fetch-depth: 0            # ⭐ 防止部分主题依赖完整提交历史
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
-          extended: true
 
-      - name: Build site
+      - name: Build
         run: hugo --minify
 
       - name: Deploy to GitHub Pages
@@ -27,4 +31,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: gh-pages
